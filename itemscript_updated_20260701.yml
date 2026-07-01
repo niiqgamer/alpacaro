@@ -1,0 +1,59 @@
+  - Id: 491070
+    AegisName: 6th_Anni_Ring_LT_TH
+    Name: "6th Anniversary Ayothaya Ring-LT"
+    Type: Armor
+    Weight: 200
+    Defense: 0
+    Slots: 1
+    Locations:
+      Left_Accessory: true
+    ArmorLevel: 2
+    EquipLevelMin: 200
+    Refineable: true
+    Gradable: true
+    Script: |
+      .@r = getrefine();
+      .@g = getenchantgrade();
+      bonus bAllStats,10;
+      bonus bAllTraitStats,10;
+      bonus bShortAtkRate,.@r*2;
+      bonus bLongAtkRate,.@r*2;
+      bonus bMatkRate,.@r*2;
+      bonus bBaseAtk,10;
+      bonus bMatk,10;
+      if (.@r>=7) {
+         bonus bPAtk,6;
+         bonus bSMatk,6;
+         if (.@r>=9) {
+            bonus bDelayRate,-15;
+            if (.@r>=12) {
+               bonus2 bAddRace,RC_All,15;
+               bonus2 bAddRace,RC_Player_Human,-15;
+               bonus2 bAddRace,RC_Player_Doram,-15;
+               bonus2 bMagicAddRace,RC_All,15;
+               bonus2 bMagicAddRace,RC_Player_Human,-15;
+               bonus2 bMagicAddRace,RC_Player_Doram,-15;
+               bonus2 bIgnoreDefRaceRate,RC_All,40;
+               bonus2 bIgnoreDefRaceRate,RC_Player_Human,-40;
+               bonus2 bIgnoreDefRaceRate,RC_Player_Doram,-40;
+               bonus2 bIgnoreMdefRaceRate,RC_All,40;
+               bonus2 bIgnoreMdefRaceRate,RC_Player_Human,-40;
+               bonus2 bIgnoreMdefRaceRate,RC_Player_Doram,-40;
+            }
+         }
+      }
+      if (.@g>=ENCHANTGRADE_D) {
+         bonus bFixedCast,-500;
+         if (.@g>=ENCHANTGRADE_C) {
+            bonus2 bSubClass,Class_Boss,15;
+            if (.@g>=ENCHANTGRADE_B) {
+               bonus bRes,120;
+               bonus bMRes,120;
+               bonus bFlee2,30;
+               if (.@g>=ENCHANTGRADE_A) {
+                  bonus2 bDropAddClass,Class_All,10;
+                  bonus2 bExpAddClass,Class_All,10;
+               }
+            }
+         }
+      }
